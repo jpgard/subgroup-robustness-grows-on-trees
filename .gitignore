@@ -1,0 +1,8 @@
+__pycache__
+datasets
+.DS_Store
+.idea
+wandb
+*.pyc
+*.egg-info
+venv
