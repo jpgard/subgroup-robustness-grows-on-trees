@@ -1,0 +1,11 @@
+model_tag:
+  value: "base"
+
+model_type:
+  value: "expgrad"
+
+base_learner:
+  value: "gbm"
+
+constraint:
+  value: "demographicparity"

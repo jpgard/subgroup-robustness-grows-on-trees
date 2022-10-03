@@ -1,0 +1,22 @@
+model_tag:
+  desc: A unique identifier for the model within an experiment; will be appended to model_type as the model name.
+  value: "testtag"
+
+model_type:
+  desc: String identifier for the model.
+  value: "randomforest"
+
+n_estimators:
+  value: 100
+
+min_samples_split:
+  value: 2
+
+min_samples_leaf:
+  value: 1
+
+max_features:
+  value: "auto"
+
+ccp_alpha:
+  value: 0.0

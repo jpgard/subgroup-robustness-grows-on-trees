@@ -1,0 +1,43 @@
+model_type:
+  value: "marginal_dro"
+criterion_name:
+  value: "marginaldro"
+
+epochs:
+  value: 10
+batch_size:
+  value: 800
+num_layers:
+  value: 3
+d_hidden:
+  value: 256
+dropout_prob:
+  value: null
+optimizer:
+  value: "sgd"
+momentum:
+  value: 0.1
+weight_decay:
+  value: 0.0001
+learning_rate:
+  value: 0.001
+
+# Marginal DRO parameters
+
+radius: # smoothness constraint (L/epsilon)
+  value: 1  # in range [10^-1, 10^3]
+
+# Maximum subgroup size to consider robustness over.
+# This is alpha_0 in the paper, i.e. Eqn (4).
+p_min:
+  value: 0.1
+
+# Number of steps to do on the inner optimization loop
+# (this is the number of training steps/epochs conducted while
+# optimizing the value of the dual variable eta).
+niter_inner:
+  value: 300  # Default value from https://github.com/hsnamkoong/marginal-dro
+
+# Number of bisection steps to do in the dual optimization step.
+nbisect:
+  value: 10  # Default value from https://github.com/hsnamkoong/marginal-dro

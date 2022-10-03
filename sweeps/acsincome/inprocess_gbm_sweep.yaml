@@ -1,0 +1,43 @@
+# Sweep values for GBM + inprocessing model with label encoding of categorical columns.
+program: scripts/train.py
+name: "inproc-le-gbm-sweep-cls-acsincome-v1.1"
+description: "hyperparameter sweep for GradientBoostingClassifier with inprocessing."
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}
+  - "--dataset=income"
+  - "--dataset_kwargs={\"make_dummies\": false, \"label_encode_categorical_cols\": true, \"subsample_size\": 0.3, \"train_frac\": 0.34}"
+
+method: grid
+metric:
+  name: accuracy_test
+  goal: maximize
+parameters:
+  model_type:
+    values: [ "expgrad", ]
+  eps:  # Allowed fairness constraint violation
+    values: [ 1e-4, 1e-3, 1e-2, 1e-1, 1.0 ]
+  eta0:  # default: 2.0
+    values: [ 2. ]
+  max_iter:  # default: 100
+    values: [ 200, ]
+  constraint:
+    values: [ "demographicparity", "equalizedodds",  "error_rate_parity", ]
+
+  base_learner:
+    values: [ "gbm", ]
+  learning_rate:
+    values: [ 0.01, 0.1, 0.5, 1.0, 2.0 ]
+  n_estimators:
+    values: [ 64, 128, 256, 512, 1024 ]
+  min_samples_split:
+    values: [ 2, ]
+  min_samples_leaf:
+    values: [ 1, ]
+  max_depth:
+    values: [ 2, 4, 8, 16 ]
+  max_features:
+    values: [ null, ]
+

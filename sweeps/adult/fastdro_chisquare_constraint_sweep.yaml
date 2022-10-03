@@ -1,0 +1,52 @@
+# Sweep values for "Large-Scale Methods for Distributionally
+# Robust Optimization", Levy et al 2020.
+
+# To view original defaults, see
+# https://github.com/daniellevy/fast-dro/tree/main/hyperparameters
+
+program: scripts/train.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}
+  - "--dataset=adult"
+name: "fastdro-chisquare-constraint-sweep-cls-adult-v1.0"
+description: "hyperparameter sweep for fast DRO with chi-square geometry (constraint version)."
+method: grid
+metric:
+  name: accuracy_test
+  goal: maximize
+
+parameters:
+  model_type:
+    values: [ "fastdro", ]
+  # training parameters
+  epochs:
+    values: [ 300, ]
+  batch_size:
+    values: [ 128, ]  # Fix b as in https://arxiv.org/pdf/2106.11189.pdf
+  # uncertainty set parameters
+  geometry:
+    values: [ "chi-square", ]
+  size:  # includes all values in DORO alpha grid, plus params in the 'fastdro' paper.
+    values: [ 0.01, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1.0 ]
+  reg:
+    values: [ 0.0 ]  # do not use chi-square penalty term in loss; using constraint instead.
+  max_iter:
+    values: [ 10000,]
+  # optimization parameters
+  optimizer:
+    values: [ "sgd", ]
+  criterion_name:
+    values: [ "fastdro", ]
+  momentum:
+    values: [0.9, 0.1, 0.0 ]
+  weight_decay:
+    values: [ 0., 0.1, 1. ]
+  learning_rate:
+    values: [ 0.1, 0.01, 0.001, 0.0001, 0.00001 ]
+  num_layers:
+    values: [ 1, 2, 3, ]
+  d_hidden:
+    values: [ 64, 128, 256,  ]

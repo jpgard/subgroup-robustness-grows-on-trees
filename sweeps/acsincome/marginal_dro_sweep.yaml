@@ -1,0 +1,60 @@
+# Sweep values for ERM.
+
+program: scripts/train.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}
+  - "--dataset=income"
+  - "--dataset_kwargs={\"subsample_size\": 0.3, \"train_frac\": 0.34}"
+name: "marginaldro-sweep-cls-income-v1.0"
+description: "hyperparameter sweep for ERM."
+
+method: grid
+metric:
+  name: accuracy_test
+  goal: maximize
+
+parameters:
+  model_type:
+    values: [ "marginal_dro", ]
+  # training parameters
+  epochs:
+    values: [ 50, ]
+  batch_size:
+    values: [ 128, ]  # Fix b as in https://arxiv.org/pdf/2106.11189.pdf
+  # optimization parameters
+  optimizer:
+    values: [ "sgd", ]
+  criterion_name:
+    values: [ "marginaldro", ]
+
+  momentum: # No momentum to match original MDRO experiments
+    values: [ 0.0 ]
+
+  # Weight decay and learning rate are fixed at the best-performing
+  # ERM (MLP) values from the same dataset, with
+  # num_layers=2 and d_hidden=128.
+
+  weight_decay:
+    values: [ 0., ]
+  learning_rate:
+    values: [ 0.1, ]
+
+  # Fix num_layers and d_hidden to reduce grid size.
+  num_layers:
+    values: [ 2, ]
+  d_hidden:
+    values: [ 128, ]
+
+  # Log-linear intervals as in MDRO tabular data experiments.
+  radius:
+    values: [ 0.1, 0.3728, 1.3895, 5.1795,
+              19.3070, 71.9686, 268.2696, 1000.0 ]
+  p_min:
+    values: [ 0.01, 0.0215, 0.0464, 0.1, 0.2154, 0.4642, 1. ]
+  niter_inner:
+      values: [300,]
+  nbisect:
+      values: [10,]

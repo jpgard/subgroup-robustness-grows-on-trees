@@ -1,0 +1,37 @@
+model_tag:
+  desc: A unique identifier for the model within an experiment; will be appended to model_type as the model name.
+  value: "base"
+
+model_type:
+  desc: String identifier for the model.
+  value: "expgrad"
+
+base_learner:
+  value: "gbm"
+
+constraint:
+  value: "error_rate_parity"
+
+learning_rate:
+  value: 0.1
+
+n_estimators:
+  value: 100
+
+min_samples_split:
+  value: 2
+
+min_samples_leaf:
+  value: 1
+
+max_depth:
+  value: 3
+
+eps:
+  value: 0.01
+
+eta0:
+  value: 2.0
+
+max_iter:
+  value: 200

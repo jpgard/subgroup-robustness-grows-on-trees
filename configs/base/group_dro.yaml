@@ -1,0 +1,36 @@
+model_tag:
+  value: "base"
+
+model_type:
+  value: "groupdro"
+
+steps:
+  value: 200
+
+batch_size:
+  value: 512
+
+num_layers:
+  value: 1
+d_hidden:
+  value: 256
+dropout_prob:
+  value: 0.0
+
+########### Criterion parameters ########
+criterion_name:
+  desc: Training criterion to use.
+  value: "groupdro"
+group_weights_step_size:
+  desc: Step size for group DRO group weights.
+  value: 0.2
+
+########### Optimization parameters ########
+optimizer:
+  value: "sgd"
+momentum:
+  value: 0.99
+weight_decay:
+  value: 0.0001
+learning_rate:
+  value: 0.001

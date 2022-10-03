@@ -1,0 +1,38 @@
+# Sweep values for svm model.
+
+program: scripts/train.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}
+  - "--dataset=pubcov"
+  - "--dataset_kwargs={\"subsample_size\": 0.3, \"train_frac\": 0.34}"
+name: "svm-sweep-cls-acspubcov-v1.0"
+description: "hyperparameter sweep for SVM."
+
+method: grid
+metric:
+  name: accuracy_test
+  goal: maximize
+
+parameters:
+  model_type:
+    values: [ "svm", ]
+  # Model hyperparameters
+  C:
+    values: [ 0.01, 0.1, 1., 10., 100., 1000. ]
+  # Kernel approximation parameters
+  kernel_type:
+    values: [ "nystroem", "rks" ]  # rks = random kitchen sinks
+  loss:
+    # squared hinge is required when penalty='l2' in LinearSVC
+    values: ["squared_hinge"]
+  gamma:
+    values: [ 0.5, 1.0, 2.0 ]
+  n_components:
+    values: [ 64, 128, 256, 512 ]
+  nystroem_kernel_degree:
+    values: [ 2, 3 ]
+  nystroem_kernel:
+    values: ["rbf", "polynomial"]

@@ -1,0 +1,26 @@
+model_tag:
+  value: "base"
+
+model_type:
+  value: "preprocessor"
+
+base_learner:
+  value: "gbm"
+
+Ax:
+  value: 0.01
+
+Ay:
+  value: 1.0
+
+Az:
+  value: 2.0
+
+k:
+  value: 5
+
+maxiter:
+  value: 5000  # 5000 is default value
+
+maxfun:
+  value: 5000  # 5000 is default value

@@ -1,0 +1,22 @@
+# Sweep values for l2 logistic regression model.
+
+program: scripts/train.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}
+  - "--dataset=compas"
+name: "l2lr-sweep-cls-compas-v1.0"
+description: "hyperparameter sweep for l2 logistic regression."
+
+method: grid
+metric:
+  name: accuracy_test
+  goal: maximize
+parameters:
+  model_type:
+    values: [ "l2lr", ]
+  C:
+    values: [ 0.001, 0.01, 0.1, 1., 10., 100., 1000., 10000. ]
+

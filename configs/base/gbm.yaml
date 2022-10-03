@@ -1,0 +1,26 @@
+# GBM with the default sklearn parameters
+model_tag:
+  desc: A unique identifier for the model within an experiment; will be appended to model_type as the model name.
+  value: "base"
+
+model_type:
+  desc: String identifier for the model.
+  value: "gbm"
+
+learning_rate:
+  value: 0.1
+
+n_estimators:
+  value: 100
+
+min_samples_split:
+  value: 2
+
+min_samples_leaf:
+  value: 1
+
+max_depth:
+  value: 3
+
+max_features:
+  value: null

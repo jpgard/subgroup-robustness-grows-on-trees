@@ -1,0 +1,55 @@
+# Sweep values for Maximum Weighted Loss Discrepancy model.
+
+# To view original defaults, see
+# # Parameters from https://worksheets.codalab.org/rest/\
+# bundles/0x2074cd3a10934e81accd6db433430ce8/contents/blob/\
+# estimator/custom_estimator.py
+
+program: scripts/train.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}
+  - "--dataset=compas"
+name: "mwld-lv-sweep-cls-compas-v1.0"
+description: "hyperparameter sweep for maximum weighted loss discrepancy, with loss variance penalty."
+method: grid
+metric:
+  name: accuracy_test
+  goal: maximize
+
+parameters:
+  model_type:
+    values: [ "mwld", ]
+  epochs:
+    values: [ 300, ]
+  batch_size:
+    values: [ 128, ]  # Fix b as in https://arxiv.org/pdf/2106.11189.pdf
+  # optimization parameters
+  optimizer:
+    values: [ "sgd", ]
+  momentum:
+    values: [0.9, 0.1, 0.0 ]
+  weight_decay:
+    values: [ 0., 0.1, 1. ]
+  learning_rate:
+    values: [ 0.1, 0.01, 0.001, 0.0001, 0.00001 ]
+  num_layers:
+    values: [ 1, 2, 3, ]
+  d_hidden:
+    values: [ 64, 128, 256,  ]
+
+
+  # l2_eta is the multiplier for the L2 norm penalty on the weights;
+  # called "eta" in paper, and "weight_decay" in pytorch.
+  # See Sec E.1. of https://arxiv.org/pdf/1906.03518.pdf
+  # We use the same grid as the other methods in this paper.
+  l2_eta:
+    values: [ 0., 0.1, 1. ]
+
+  # lv_lambda is the multiplier for the loss variance penalty.
+  lv_lambda:
+    values: [1e-3, 1e-2, 1e-1, 1., 10.0, ]
+  criterion_name:
+    values: [ "loss_variance", ]

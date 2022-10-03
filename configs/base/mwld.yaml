@@ -1,0 +1,26 @@
+model_tag:
+  desc: A unique identifier for the model within an experiment; will be appended to model_type as the model name.
+  value: "testtag"
+
+model_type:
+  desc: String identifier for the model.
+  value: "mwld"
+
+steps:
+  value: 10000
+optimizer:
+  value: "sgd"
+batch_size:
+  value: 128
+num_layers:
+  value: 1
+dropout_prob:
+  value: 0.0
+learning_rate:
+  value: 0.001
+l2_eta:
+  value: 0.001
+lv_lambda:
+  value: 0.001
+criterion_name:
+  value: "loss_variance"

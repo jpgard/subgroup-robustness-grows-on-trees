@@ -1,0 +1,15 @@
+torch==1.10.1
+torchvision==0.11.2
+torchinfo==1.5.4
+lightgbm==3.3.2
+scikit-learn==0.24.2
+folktables==0.0.11
+frozendict==2.3.0
+fairlearn @ git+https://github.com/fairlearn/fairlearn.git@2822a92c217d76f039123982a80831224df00a6f
+aif360==0.4.0
+wandb==0.12.15
+qhoptim==1.1.0
+tensorflow==2.8.0
+adversarial-robustness-toolbox>=1.0.0
+BlackBoxAuditing
+kaggle==1.5.12

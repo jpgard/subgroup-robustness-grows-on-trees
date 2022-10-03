@@ -1,0 +1,40 @@
+model_tag:
+  value: "dro-chisq-pen"
+
+model_type:
+  value: "fastdro"
+
+steps:
+  value: 10000
+
+batch_size:
+  value: 64
+num_layers:
+  value: 1
+d_hidden:
+  value: 256
+dropout_prob:
+  value: 0.0
+
+######### Uncertainty set parameters #########
+geometry:
+  value: "chi-square"
+size:
+  value: "inf"
+reg:
+  value: 0.4
+max_iter:
+  value: 1000
+
+######### Optimization parameters #########
+optimizer:
+  value: "sgd"
+criterion_name:
+  value: "fastdro"
+momentum:
+  value: 0.9
+weight_decay:
+  value: 0.0001
+learning_rate:
+  value: 0.0001
+

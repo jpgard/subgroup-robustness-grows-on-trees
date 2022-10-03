@@ -1,0 +1,21 @@
+# GBM with the default sklearn parameters
+model_tag:
+  value: "base"
+
+model_type:
+  value: "lightgbm"
+
+max_depth: # Maximum tree depth for base learners, <=0 means no limit.
+  value: -1
+
+learning_rate: # Boosting learning rate.
+  value: 0.1
+
+n_estimators: # Number of boosted trees to fit.
+  value: 100
+
+reg_lambda: # L2 regularization term on weights.
+  value: 0.
+
+min_child_samples: # Minimum number of data needed in a child (leaf).
+  value: 20

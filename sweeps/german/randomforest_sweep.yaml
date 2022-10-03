@@ -1,0 +1,28 @@
+# Sweep values for random forest model.
+
+program: scripts/train.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}
+  - "--dataset=german"
+name: "randomforest-sweep-cls-german-v1.0"
+description: "hyperparameter sweep for random forest."
+method: grid
+metric:
+  name: accuracy_test
+  goal: maximize
+parameters:
+  model_type:
+    values: [ "randomforest", ]
+  n_estimators:
+    values: [ 64, 128, 256, 512 ]
+  min_samples_split:
+    values: [ 2, 4, 8, 16 ]
+  min_samples_leaf:
+    values: [ 1, 2, 4, 8, 16 ]
+  max_features:
+    values: [ "sqrt", "log2" ]
+  ccp_alpha:
+    values: [ 0., 0.001, 0.01, 0.1, ]

@@ -1,0 +1,8 @@
+model_tag:
+  value: "base"
+
+model_type:
+  value: "l2lr"
+
+C:
+  value: 1.

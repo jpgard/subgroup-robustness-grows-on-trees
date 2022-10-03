@@ -1,0 +1,38 @@
+model_tag:
+  desc: A unique identifier for the model within an experiment; will be appended to model_type as the model name.
+  value: "testtag"
+
+model_type:
+  desc: String identifier for the model.
+  value: "doro"
+
+steps:
+  value: 10000
+batch_size:
+  value: 64
+num_layers:
+  value: 1
+d_hidden:
+  value: 256
+dropout_prob:
+  value: 0.0
+
+########### DORO criterion parameters ####
+geometry:
+  value: "chi-square"
+alpha:
+  value: 0.5 # orig 0.5; see appendix B.3 of DORO paper
+eps:
+  value: 0.2 # orig 0.2; see appendix B.3 of DORO paper
+criterion_name:
+  value: "doro"
+
+########### DORO optimization parameters ####
+optimizer:
+  value: "sgd"
+momentum:
+  value: 0.
+weight_decay:
+  value: 0.0
+learning_rate:
+  value: 0.01

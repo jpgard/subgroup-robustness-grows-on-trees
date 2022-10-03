@@ -1,0 +1,31 @@
+name: disparity
+channels:
+  - defaults
+dependencies:
+  - python=3.7
+  - tensorflow 
+  - lightgbm 
+  - scikit-learn 
+  - transformers
+  - cudatoolkit 
+  - pytorch
+  - torchvision
+  - pip
+  - pip:
+    - accelerate 
+    - wandb==0.12.15
+    - pytorch_tabnet 
+    - aif360 
+    - ipdb
+      # - pytorch
+      # - torch 
+      # - torchvision 
+    - torchinfo 
+    - scikit-learn-extra
+    - frozendict
+    - category_encoders
+    - qhoptim
+    - fairlearn 
+    - folktables
+    - -e .
+

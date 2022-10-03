@@ -1,0 +1,51 @@
+# GBM with the default sklearn parameters
+model_tag:
+  value: "defaults"
+
+model_type:
+  value: "xgboost"
+
+# all default parameters for XGBoost, as documented here:
+# https://xgboost.readthedocs.io/en/stable/parameter.html
+learning_rate:
+  value: 0.3
+
+#Minimum loss reduction required to make a further partition on a leaf node
+# of the tree. The larger gamma is, the more conservative the algorithm will be.
+# alias for gamma.
+min_split_loss:
+ value: 0
+
+# Maximum depth of a tree. Increasing this value will make the model more
+# complex and more likely to overfit. 0 indicates no limit on depth.
+# Beware that XGBoost aggressively consumes memory when training a deep tree.
+max_depth:
+  value: 6
+
+# colsample_bytree is the subsample ratio of columns when constructing each
+# tree. Subsampling occurs once for every tree constructed.
+colsample_bytree:
+  value: 1
+
+# colsample_bylevel is the subsample ratio of columns for each level.
+# Subsampling occurs once for every new depth level reached in a tree.
+# Columns are subsampled from the set of columns chosen for the current tree.
+colsample_bylevel:
+  value: 1
+
+# colsample_bynode is not supported for GPU.
+
+# Maximum number of discrete bins to bucket continuous features.
+#
+# Increasing this number improves the optimality of splits at the
+# cost of higher computation time.
+max_bin:
+  value: 256
+
+#Controls a way new nodes are added to the tree.
+#Currently supported only if tree_method is set to hist, approx or gpu_hist.
+#Choices:
+#depthwise: split at nodes closest to the root.
+#lossguide: split at nodes with highest loss change.
+grow_policy:
+  value: "depthwise"

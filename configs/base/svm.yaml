@@ -1,0 +1,22 @@
+model_tag:
+  value: "base"
+
+model_type:
+  value: "svm"
+
+
+C:
+  value: 1.
+kernel_type:
+  value: "nystroem"
+loss:
+  value: "squared_hinge"
+gamma:
+  value: 1.0
+n_components:
+  value: 128
+nystroem_kernel_degree:
+  value: 2  # ignored for any kernel except polynomial
+nystroem_kernel:
+  value: "rbf"
+

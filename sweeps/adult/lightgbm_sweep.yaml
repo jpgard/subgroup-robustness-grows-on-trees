@@ -1,0 +1,31 @@
+# Sweep values for LightGBM model.
+
+program: scripts/train.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}
+  - "--dataset=adult"
+name: "lightgbm-sweep-cls-adult-v1.1"
+description: "hyperparameter sweep for lightgbm."
+method: grid
+metric:
+  name: accuracy_test
+  goal: maximize
+parameters:
+  model_type:
+    values: [ "lightgbm", ]
+  learning_rate:
+    values: [ 0.01, 0.1, 0.5 , 1.]
+  n_estimators:
+    values: [ 64, 128, 256, 512, ]
+  reg_lambda:
+    values: [ 0., 0.00001, 0.0001, 0.001, 0.01, 0.1, 1.]
+  min_child_samples:
+    values: [ 1, 2, 4, 8, 16, 32, 64]
+  max_depth:
+    values: [ -1, 2, 4, 8 ]
+  colsample_bytree:
+    values: [1., 0.8, 0.5, 0.4,]
+

@@ -1,0 +1,47 @@
+# Sweep values for GBM + LFR preprocessor model with label encoding of inputs.
+
+program: scripts/train.py
+name: "lfrgbm-le-sweep-cls-adult-v1.0"
+description: "hyperparameter sweep for GradientBoostingClassifier with LFR preprocessing."
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}
+  - "--dataset=adult"
+  - "--dataset_kwargs={\"make_dummies\": false, \"label_encode_categorical_cols\": true}"
+
+method: grid
+metric:
+  name: accuracy_test
+  goal: maximize
+parameters:
+  model_type:
+    values: [ "preprocessor", ]
+  base_learner:
+    values: [ "gbm", ]
+  Ax:  # Fix Ax as in "Learning Fair Representations"
+    values: [ 0.01, ]
+  Ay:
+    values: [ 0.001, 0.01, 0.1, 1, 10, ]
+  Az:
+    values: [ 0.001, 0.01, 0.1, 1, 10, ]
+  k:
+    values: [ 10, ]  # 10 is default value
+  maxiter:
+    values: [ 5000, ]  # 5000 is default value
+  maxfun:
+    values: [ 5000, ]  # 5000 is default value
+  learning_rate:
+    values: [ 0.01, 0.1, 0.5, 1.0, 2.0 ]
+  n_estimators:
+    values: [ 64, 128, 256, 512, 1024 ]
+  min_samples_split:
+    values: [ 2, ]
+  min_samples_leaf:
+    values: [ 1, ]
+  max_depth:
+    values: [ 2, 4, 8, 16 ]
+  max_features:
+    values: [ null, ]
+

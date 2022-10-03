@@ -1,0 +1,41 @@
+# Sweep values for ERM.
+
+program: scripts/train.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}
+  - "--dataset=pubcov"
+  - "--dataset_kwargs={\"subsample_size\": 0.3, \"train_frac\": 0.34}"
+name: "mlp-sweep-cls-acspubcov-v1.0"
+description: "hyperparameter sweep for ERM."
+
+method: grid
+metric:
+  name: accuracy_test
+  goal: maximize
+
+parameters:
+  model_type:
+    values: [ "mlp", ]
+  # training parameters
+  epochs:
+    values: [ 50, ]
+  batch_size:
+    values: [ 128, ]  # Fix b as in https://arxiv.org/pdf/2106.11189.pdf
+  # optimization parameters
+  optimizer:
+    values: [ "sgd", ]
+  criterion_name:
+    values: [ "ce", ]
+  momentum:
+    values: [0.9, 0.1, 0.0 ]
+  weight_decay:
+    values: [ 0., 0.1, 1. ]
+  learning_rate:
+    values: [ 0.1, 0.01, 0.001, 0.0001, 0.00001 ]
+  num_layers:
+    values: [ 1, 2, 3, ]
+  d_hidden:
+    values: [ 64, 128, 256,  ]

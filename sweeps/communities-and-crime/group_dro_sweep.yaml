@@ -1,0 +1,42 @@
+# Sweep values for Group DRO.
+
+program: scripts/train.py
+command:
+  - ${env}
+  - ${interpreter}
+  - ${program}
+  - ${args}
+  - "--dataset=communities-and-crime"
+name: "groupdro-sweep-cls-communities-and-crime-v1.0"
+description: "hyperparameter sweep for Group DRO."
+method: grid
+metric:
+  name: accuracy_test
+  goal: maximize
+
+parameters:
+  model_type:
+    values: [ "groupdro", ]
+  # training parameters
+  epochs:
+    values: [ 100, ]
+  batch_size:
+    values: [ 128, ]  # Fix b as in https://arxiv.org/pdf/2106.11189.pdf
+  group_weights_step_size:
+    values: [0.001, 0.01, 0.1, 0.2]
+  # optimization parameters
+  optimizer:
+    values: [ "sgd", ]
+  criterion_name:
+    values: [ "groupdro", ]
+  momentum:
+    values: [0.9, 0.1, 0.0 ]
+  weight_decay:
+    values: [ 0., 0.1, 1. ]
+  learning_rate:
+    values: [ 0.1, 0.01, 0.001, 0.0001, 0.00001 ]
+  num_layers:
+    values: [ 1, 2, 3, ]
+  d_hidden:
+    values: [ 64, 128, 256,  ]
+
