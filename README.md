@@ -72,7 +72,7 @@ Set the environment variable `WANDB_API_KEY` (this may be set for you by weights
 
 Follow the instructions that appear after the prompt to start one or more "agents" to do the sweeping in a separate shell. For scripts we used to launch several agents at once, please reach out to the repo authors.
 
-*Note: running the full hyperparameter sweeps in this repo currently stretches the limits of performance for wandb. See below*
+*Note: you may encounter performance issues in the Weights & Biases interface when running the full hyperparameter sweeps in this repo. See note below.*
 
 ## Questions and Issues
 
