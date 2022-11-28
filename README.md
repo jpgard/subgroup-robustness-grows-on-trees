@@ -70,7 +70,7 @@ To initiate a sweep:
 
 * Set the environment variable `WANDB_API_KEY` (this may be set for you by weights & biases, or you may be probmped to set it). Then, initiate the sweep by running e.g.:
 
-```wandb sweep sweeps/adult/xgboost.yaml```
+    ```wandb sweep sweeps/adult/xgboost.yaml```
 
 * Follow the instructions that appear after the prompt to start one or more "agents" to do the sweeping in a separate shell. For scripts we used to launch several agents at once, please reach out to the repo authors.
 
