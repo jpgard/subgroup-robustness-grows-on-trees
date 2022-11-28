@@ -74,8 +74,12 @@ Follow the instructions that appear after the prompt to start one or more "agent
 
 *Note: running the full hyperparameter sweeps in this repo currently stretches the limits of performance for wandb. See below*
 
+## Questions and Issues
 
-# A note on Weights & Biases
+If you encounter a problem with the code or have a question, we will do our best to promptly address it. Please file an [issue](https://github.com/jpgard/subgroup-robustness-grows-on-trees/issues) in Github.
+
+
+## A note on Weights & Biases
 
 The scripts use [Weights & Biases](https://wandb.ai/) by default. However, as of publication time, the Weights & Biases backend is *not* designed to handle hyperparameter sweeps as large as the one tracked in this project. As such, we don't recommend using a single w&b project to store all of your sweeps, if you decide to run the complete set of sweeps to replicate the paper (around 341k runs). Running only a subset of those sweeps within a single project is fine in our experience (under ~10k runs). 
 
