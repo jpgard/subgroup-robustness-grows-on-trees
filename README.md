@@ -60,17 +60,19 @@ The `train.py` script uses the following two important flags, shown above:
 * `default_config` provides a path to a .yaml file specifying all of the required named hyperparameters for the model (these are defined for each model in `src/config.py`).
 * `dataset` gives the name of the dataset. Valid dataset names are: `adult`, `brfss`, `candc`, `compas`, `german`, `income`, `larc-grade`, `pubcov`.
 
+You can use the `yaml` files as a template to adjust hyperparameters for a dataset as desired by simply changing the parameters in each file.
+
 ## Hyperparameter sweeps
 
-Hyperparameter sweeps can be conducted using the provided `yaml` files (in the `sweeps` directory) via `wandb`. Hyperparameter sweeps are grid sweeps, which means that a complete training run will be executed for every hyperparameter configuration defined in the sweep file.
+Hyperparameter sweeps can be conducted using the provided `yaml` files (in the `sweeps` directory) via `wandb`. Hyperparameter sweeps are grid sweeps, which means that a complete training run will be executed for every hyperparameter configuration defined in the sweep file. Each run of the sweep will call `train.py` with a different set of hyperparameters, once for every possible configuration defined in the sweep file.
 
 To initiate a sweep:
 
-Set the environment variable `WANDB_API_KEY` (this may be set for you by weights & biases, or you may be probmped to set it). Then, initiate the sweep by running e.g.:
+* Set the environment variable `WANDB_API_KEY` (this may be set for you by weights & biases, or you may be probmped to set it). Then, initiate the sweep by running e.g.:
 
 ```wandb sweep sweeps/adult/xgboost.yaml```
 
-Follow the instructions that appear after the prompt to start one or more "agents" to do the sweeping in a separate shell. For scripts we used to launch several agents at once, please reach out to the repo authors.
+* Follow the instructions that appear after the prompt to start one or more "agents" to do the sweeping in a separate shell. For scripts we used to launch several agents at once, please reach out to the repo authors.
 
 *Note: you may encounter performance issues in the Weights & Biases interface when running the full hyperparameter sweeps in this repo. See note below.*
 
