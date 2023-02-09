@@ -1,4 +1,14 @@
+# Subgroup Robustness Grows on Trees: An Empirical Baseline Investigation
+
+[Josh Gardner](https://homes.cs.washington.edu/~jpgard/), [Zoran Popovi&#263;](https://homes.cs.washington.edu/~zoran/), [Ludwig Schmidt](https://people.csail.mit.edu/ludwigs/).
+
 This repository hosts the code associated with the NeurIPS 2022 paper [Subgroup Robustness Grows on Trees: An Empirical Baseline Investigation](https://arxiv.org/abs/2211.12703). If you use this code in your research, please cite our paper.
+
+![Poster](poster.png)
+
+**Abstract:** Researchers have proposed many methods for fair and robust machine learning, but comprehensive empirical evaluation of their subgroup robustness is lacking. In this work, we address this gap in the context of tabular data, where sensitive subgroups are clearly-defined, real-world fairness problems abound, and prior works often do not compare to state-of-the-art tree-based models as baselines. We conduct an empirical comparison of several previously-proposed methods for fair and robust learning alongside state-of-the-art tree-based methods and other baselines. Via experiments with more than 340,000 model configurations on eight datasets, we show that tree-based methods have strong subgroup robustness, even when compared to robustness- and fairness-enhancing methods. Moreover, the best tree-based models tend to show good performance over a range of metrics, while robust or group-fair models can show brittleness, with significant performance differences across different metrics for a fixed model. We also demonstrate that tree-based models show less sensitivity to hyperparameter configurations, and are less costly to train. Our work suggests that tree-based ensemble models make an effective baseline for tabular data, and are a sensible default when subgroup robustness is desired.
+
+## Project Structure
 
 The repository contains the following directories:
 
