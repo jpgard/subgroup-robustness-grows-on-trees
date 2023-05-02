@@ -1,5 +1,5 @@
 __pycache__
-datasets
+/datasets
 .DS_Store
 .idea
 wandb
